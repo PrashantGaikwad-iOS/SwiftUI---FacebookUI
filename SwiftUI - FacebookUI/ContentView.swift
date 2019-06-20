@@ -31,7 +31,7 @@ struct ContentView : View {
                     VStack(alignment: .leading) {
                         HStack {
                             ForEach(posts.identified(by: \.id)){ post in
-                                NavigationButton(destination: GroupDetailView()){
+                                NavigationButton(destination: GroupDetailView(post: post)){
                                     GroupView(post: post)
                                 }
                             }
@@ -49,8 +49,12 @@ struct ContentView : View {
 }
 
 struct GroupDetailView: View {
+    let post: Post
     var body: some View {
-        Text("GROUP DETAIL VIEW")
+        VStack {
+            Image(post.imageName)
+            Text("user image")
+        }.navigationBarTitle(Text(post.username))
     }
 }
 
